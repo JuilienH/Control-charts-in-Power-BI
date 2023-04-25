@@ -18,5 +18,6 @@ Here is the DAX template:
 ```
 Text.From(Date.Year([#"[Date]"])) & Text.From(Date.QuarterOfYear([#"[Date]"]))
 ```
+
 ## merge tables
 ## plot it on line chart!
