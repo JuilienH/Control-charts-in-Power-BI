@@ -14,9 +14,9 @@ This step is crucial to associate the calculations with the data at a different 
 
 ![custom](https://user-images.githubusercontent.com/22305109/234354347-c016bef5-a47c-4f5f-a333-aab001e43463.PNG)
 
-Here is the DAX template:
+Here is the DAX for getting the year and quarter number from Date column:
 ```
-Text.From(Date.Year([#"[Date]"])) & Text.From(Date.QuarterOfYear([#"[Date]"]))
+TableJoinKey=Text.From(Date.Year([#"[Date]"])) & Text.From(Date.QuarterOfYear([#"[Date]"]))
 ```
 
 ## merge tables
