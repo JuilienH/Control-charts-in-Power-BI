@@ -6,6 +6,9 @@ Mathematical definitions: The central limit is the average. The upper limit is a
 # Data model strcuture that works in Power BI
 When we use open-sourced programming such as R or python, the calculations from numbers in different dates are easily coded. However, Power BI has its own way in data wrangling from the perspective of low-code environment. Thus, I developed this to make our own control charts weaved in Power BI. 
 ## define the time frames used for calculating control limits
+We want to compare how we currently perform to the prior quarter, so I wrote the queries in which the time frame is defined. When importing data, you can put the time statement in WHERE clause. Here is my example when I query against Microsoft SQL Server Analysis Services:
+![import](https://user-images.githubusercontent.com/22305109/234293734-836685b2-5908-4ab1-a6bf-2bf912448fcc.PNG)
+
 ## create table join links
 ## merge tables
 ## plot it on line chart!
