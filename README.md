@@ -10,10 +10,13 @@ We want to compare how we currently perform to the prior quarter, so I wrote the
 ![import](https://user-images.githubusercontent.com/22305109/234293734-836685b2-5908-4ab1-a6bf-2bf912448fcc.PNG)
 
 ## create table join links
-This step is crucial to associate the calculations with the data at a different point of time. This concept is to create a table-join key, composed of the date difference information. In the tables where I calculated control limits, I would put 20222 for 2022 Q1 data, as an example. And then the main table's table-join key will include the actual date information, derived from the Date column.
+This step is crucial to associate the calculations with the data at a different point of time. This concept is to create a table-join key, composed of the date difference information. In the tables where I calculated control limits, I would put 20222 for 2022 Q1 data, as an example. And then the main table's table-join key will include the actual date information, derived from the Date column. I created the custom column for the table-join keys in Power Query Editor:
 
-'''
+![custom](https://user-images.githubusercontent.com/22305109/234354347-c016bef5-a47c-4f5f-a333-aab001e43463.PNG)
 
-'''
+Here is the DAX template:
+```
+Text.From(Date.Year([#"[Date]"])) & Text.From(Date.QuarterOfYear([#"[Date]"]))
+```
 ## merge tables
 ## plot it on line chart!
