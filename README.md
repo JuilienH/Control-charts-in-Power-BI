@@ -20,4 +20,8 @@ TableJoinKey=Text.From(Date.Year([#"[Date]"])) & Text.From(Date.QuarterOfYear([#
 ```
 
 ## merge tables
+In Power Query Editor, I then was able to manually merge tables to bring in control limits from the prior quarter for each quarter.
+![merge](https://user-images.githubusercontent.com/22305109/234357040-3d8b2fa1-8c8b-44dd-82bc-b2aa1fb08f63.PNG)
+
 ## plot it on line chart!
+Once the merge table is created, I have all I have to plot a control chart using Line Chart visual in Power BI within few clicks!
