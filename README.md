@@ -24,7 +24,7 @@ In Power Query Editor, I then was able to manually merge tables to bring in cont
 ![merge](https://user-images.githubusercontent.com/22305109/234357040-3d8b2fa1-8c8b-44dd-82bc-b2aa1fb08f63.PNG)
 
 ## plot it on line chart!
-Once the merge table is created, I have all I have to plot a control chart using Line Chart visual in Power BI within few clicks! Simply put the date on the X-axis and any daily measures on the Y-axis as well as the control limits. 
+Once the merge table is created, I have all I have to plot a control chart using Line Chart visual in Power BI within few clicks! Simply put the date on the X-axis and any daily measures on the Y-axis as well as the control limits. As you can see as below, the control limits are nicely positioned at each quarter. You can see the line values shift when the quarter transits. 
 
 ![chart](https://user-images.githubusercontent.com/22305109/234358302-5aa3d9a7-fcf3-478c-b4d4-d812ae264a04.PNG)
 
