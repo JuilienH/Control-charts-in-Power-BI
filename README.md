@@ -2,7 +2,7 @@
 When it comes to control limits, there are custom visuals you can download from Powr BI apps or embd from open-sourced programming which is always full of graphing packages. However, you may encounter either a license issue or frigid designs that don't meet your requirements.  This repository shows you how to create your own control limits using the basic Power BI visual, line chart.
 ![line](https://user-images.githubusercontent.com/22305109/234286654-564179c5-ecdd-4330-8c6e-a6138f40d6a5.PNG)
 # Control limits
-Mathematical definitions: The central limit is the average. The upper limit is a multiple of the standard deviation above the average. The lower control limit is a multiple of the standard deviation below the average. Depending on your business needs, you can decide how many units of standard deviation in the calculation. However, the tricky part is: These statistics are calculated based off the numbers from prior time frames, like a quarter ago. 
+Mathematical definitions: The central limit (CL) is the average. The upper control limit (UCL) is a multiple of the standard deviation above the average. The lower control limit (LCL) is a multiple of the standard deviation below the average. Depending on your business needs, you can decide how many units of standard deviation in the calculation. However, the tricky part is: These statistics are calculated based off the numbers from prior time frames, like a quarter ago. 
 # Data model strcuture that works in Power BI
 When we use open-sourced programming such as R or python, the calculations from numbers in different dates are easily coded. However, Power BI has its own way in data wrangling in the low-code environment. Thus, I developed this to make our own control charts weaved in Power BI data structure. 
 ## define the time frames used for calculating control limits
@@ -24,4 +24,7 @@ In Power Query Editor, I then was able to manually merge tables to bring in cont
 ![merge](https://user-images.githubusercontent.com/22305109/234357040-3d8b2fa1-8c8b-44dd-82bc-b2aa1fb08f63.PNG)
 
 ## plot it on line chart!
-Once the merge table is created, I have all I have to plot a control chart using Line Chart visual in Power BI within few clicks!
+Once the merge table is created, I have all I have to plot a control chart using Line Chart visual in Power BI within few clicks! Simply put the date on the X-axis and any daily measures on the Y-axis as well as the control limits. 
+
+![chart](https://user-images.githubusercontent.com/22305109/234358302-5aa3d9a7-fcf3-478c-b4d4-d812ae264a04.PNG)
+
