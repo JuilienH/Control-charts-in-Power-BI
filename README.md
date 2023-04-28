@@ -28,6 +28,24 @@ Once the merge table is created, I have all I have to plot a control chart using
 
 ![chart](https://user-images.githubusercontent.com/22305109/234358302-5aa3d9a7-fcf3-478c-b4d4-d812ae264a04.PNG)
 
-## rolling averages
-There is a quick measure you can tap in Power BI to get the rolling average for a numeric field. If it doesn't work for your visual, here is the DAX I successfully used to overlay on the control charts.
+## Rolling averages
+There is a quick measure you can tap in Power BI to get the rolling average for a numeric field. 
 
+![r](https://user-images.githubusercontent.com/22305109/235180835-6cd6c015-83bb-45d9-a05d-aed9f92e7df2.PNG)
+
+If it doesn't work for your visual, here is the DAX I successfully used to overlay on the control charts.
+
+```
+rolling_average_measure = 
+VAR __LAST_DATE = LASTDATE('table'[Date])
+VAR MyIndex='table'[Index]
+VAR myresult=
+    AVERAGEX(
+        FILTER(
+            'table',
+            'table'[Index]> MyIndex-7 &&
+            'table'[Index] <=MyIndex
+        ),'table'[numeric_field]
+    )
+RETURN IF(__LAST_DATE > TODAY(), BLANK(), FIXED(myresult,2))
+```
