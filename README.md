@@ -33,10 +33,44 @@ There is a quick measure you can tap in Power BI to get the rolling average for 
 
 ![r](https://user-images.githubusercontent.com/22305109/235180835-6cd6c015-83bb-45d9-a05d-aed9f92e7df2.PNG)
 
-If it doesn't work for your visual, here is the DAX I successfully used to overlay on the control charts.
+The common glitch in using the quick measure is: There will have rolling averages calculated at the future dates when the data hasn't existed. Of course, different built may have other problems. To fix this, I conditional return values when the date is after today as below:
 
 ```
-rolling_average_measure = 
+Rolling average = 
+IF(
+	ISFILTERED('table'[Date]),
+	ERROR("Time intelligence quick measures can only be grouped or filtered by the Power BI-provided date hierarchy or primary date column."),
+	VAR __LAST_DATE = LASTDATE('table'[Date])
+	VAR rolling=
+		AVERAGEX(
+			DATESBETWEEN(
+				'table'[Date],
+				DATEADD(__LAST_DATE, -29, DAY),
+				DATEADD(__LAST_DATE,0, DAY)
+			),
+			CALCULATE(AVERAGE('table'[numeric_field]))
+		)
+    RETURN IF(__LAST_DATE > TODAY(), BLANK(), rolling)
+)
+```
+
+Furthermore, the following DAX is used to calculate **grouped averages**:
+
+```
+30-day Rolling average = IF(ISAFTER('table'[Date],TODAY())=TRUE,BLANK(),CALCULATE (
+    AVERAGE ('table'[numeric_field]),
+    DATESBETWEEN(
+				'table'[Date],
+				DATEADD(LASTDATE('table'[Date]),-29, DAY),
+				DATEADD(LASTDATE('table'[Date]),0, DAY)
+			),
+    ALLEXCEPT ( 'table', 'table'[categorical_field] )
+))
+```
+Another issue that will mess up the above DAX calculation occurs when the database you query to get data from has no placeholders for future dates most of the time. To make the future dates appear in the X-axis of the control charts using Line Chart Visual, we can create a date table appended to the data table. However, the dates will not in sequence logically sometimes. We can use the Index function to fix this. Index Statement numbers the dates from the oldest to the newest. We then run the DAX on the index rather than the date as below:
+
+```
+rolling_average = 
 VAR __LAST_DATE = LASTDATE('table'[Date])
 VAR MyIndex='table'[Index]
 VAR myresult=
