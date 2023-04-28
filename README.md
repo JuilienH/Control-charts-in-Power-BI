@@ -33,7 +33,7 @@ There is a quick measure you can tap in Power BI to get the rolling average for 
 
 ![r](https://user-images.githubusercontent.com/22305109/235180835-6cd6c015-83bb-45d9-a05d-aed9f92e7df2.PNG)
 
-The common glitch in using the quick measure is: There will have rolling averages calculated at the future dates when the data hasn't existed. Of course, different built may have other problems. To fix this, I conditional return values when the date is after today as below:
+The common glitch in using the quick measure is: There will have rolling averages calculated at the future dates when the data hasn't existed. Of course, different built may have other problems. To fix this, I conditionally return values when the date is after today as below:
 
 ```
 Rolling average = 
